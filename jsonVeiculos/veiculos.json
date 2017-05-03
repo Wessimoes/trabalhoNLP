@@ -1,0 +1,24 @@
+{
+  "veiculoterrestre": [
+    "carro",
+    "quadriciclo",
+    "moto",
+    "trator",
+    "caminhao",
+    "carreta",
+    "trem",
+    "metro",
+    "triciclo"
+  ],
+  "veiculoaquatico": [
+    "bote",
+    "barco",
+    "navio",
+    "iate"
+  ],
+  "veiculoaereo": [
+    "aviao",
+    "boing",
+    "jato"
+  ]
+}
