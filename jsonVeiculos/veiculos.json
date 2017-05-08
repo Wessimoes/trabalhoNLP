@@ -7,18 +7,26 @@
     "caminhao",
     "carreta",
     "trem",
-    "metro",
     "triciclo"
   ],
   "veiculoaquatico": [
     "bote",
     "barco",
     "navio",
-    "iate"
+    "iate",
+    "balsa",
+    "canoa",
+    "lancha",
+    "veleiro"
   ],
   "veiculoaereo": [
     "aviao",
     "boing",
-    "jato"
+    "jato",
+    "balao",
+    "dirigivel",
+    "planador",
+    "helicoptero",
+    "drone"
   ]
 }

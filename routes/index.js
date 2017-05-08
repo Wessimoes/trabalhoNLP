@@ -10,6 +10,10 @@ router.get('/', function (req, res, next) {
 router.post('/tratamento', function (req, res, next) {
     let frase = req.body.pergunta;
 
+    if (frase.length === 0) {
+        res.redirect('/');
+    }
+
     const chain = frase.split(' ');
 
     const agente = chain.shift();
@@ -30,15 +34,15 @@ router.post('/tratamento', function (req, res, next) {
     const obj = JSON.parse(fs.readFileSync('./jsonVeiculos/veiculos.json', 'utf8'));
 
     if (obj[incognita]) {
-        if (obj[incognita].find((element, index, array) => element == agente)) {
+        if (obj[incognita].find((element, index, array) => element === agente)) {
             console.log("achou agente");
             respostaFrase = true;
 
         }
-        return res.render('resposta', { title: 'tratamento', questao: frase, resposta: respostaFrase });
+        return res.render('resposta', { title: 'Tratamento da Informação', questao: frase, resposta: respostaFrase });
     }
 
-    res.render('resposta', { title: 'tratamento', questao: frase, resposta: respostaFrase });
+    res.render('resposta', { title: 'Tratamento da Informação', questao: frase, resposta: respostaFrase });
 });
 
 module.exports = router;
