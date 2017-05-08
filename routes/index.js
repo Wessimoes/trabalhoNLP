@@ -4,7 +4,7 @@ var fs = require('fs');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('index', { title: 'Express' });
+    res.render('index', { title: 'Trabalho NLP' });
 });
 
 router.post('/tratamento', function (req, res, next) {
@@ -15,6 +15,8 @@ router.post('/tratamento', function (req, res, next) {
     const agente = chain.shift();
 
     let tamanho = chain.length - 1;
+
+    let respostaFrase = false;
 
     //entra nesse caso se for artigo a penultima palavra
     if (chain[tamanho - 1].length < 3) {
@@ -30,10 +32,13 @@ router.post('/tratamento', function (req, res, next) {
     if (obj[incognita]) {
         if (obj[incognita].find((element, index, array) => element == agente)) {
             console.log("achou agente");
+            respostaFrase = true;
+
         }
+        return res.render('resposta', { title: 'tratamento', questao: frase, resposta: respostaFrase });
     }
 
-    res.render('index', { title: 'tratamento' });
+    res.render('resposta', { title: 'tratamento', questao: frase, resposta: respostaFrase });
 });
 
 module.exports = router;
