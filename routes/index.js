@@ -39,10 +39,10 @@ router.post('/tratamento', function (req, res, next) {
             respostaFrase = true;
 
         }
-        return res.render('resposta', { title: 'Tratamento da Informação', questao: frase, resposta: respostaFrase });
+        return res.render('resposta', { title: 'Tratamento', questao: frase, resposta: respostaFrase });
     }
 
-    res.render('resposta', { title: 'Tratamento da Informação', questao: frase, resposta: respostaFrase });
+    res.render('resposta', { title: 'Tratamento', questao: frase, resposta: respostaFrase });
 });
 
 module.exports = router;
