@@ -1,6 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var fs = require('fs');
+const express = require('express');
+const router = express.Router();
+const fs = require('fs');
+const animais = JSON.parse(fs.readFileSync('./data/animais.json', 'utf8'));
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -8,40 +9,35 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/tratamento', function (req, res, next) {
-    let frase = req.body.pergunta;
-
+    const frase = req.body.pergunta;
+    const chain = frase.split(' ');
+    let respostaFrase = false;
+    
     if (frase.length === 0) {
         res.redirect('/');
     }
 
-    const chain = frase.split(' ');
-
-    const agente = chain.shift();
-
-    let tamanho = chain.length - 1;
-
-    let respostaFrase = false;
-
-    //entra nesse caso se for artigo a penultima palavra
-    if (chain[tamanho - 1].length < 3) {
-        chain.splice(tamanho - 1, 1);
+    if(chain[0].length < 3){
+        chain.shift();
     }
 
-    let incognita = chain.splice(tamanho - 1, 1) + chain.pop();
-    incognita = incognita.toLowerCase();
-    console.log(incognita);
+    let vertice = chain.shift().toLowerCase(); 
+    let galho;
 
-    const obj = JSON.parse(fs.readFileSync('./jsonVeiculos/veiculos.json', 'utf8'));
+    if(chain.length > 1){
+        galho = chain.pop().toLowerCase();
+    }
 
-    if (obj[incognita]) {
-        if (obj[incognita].find((element, index, array) => element === agente)) {
-            console.log("achou agente");
+    if (animais[vertice] && animais["raizes"].includes(galho)){
+        const e = animais[vertice];
+        const um = animais[galho];
+
+
+    if(e[0] >= um[0] && e[1] <= um[1]){
             respostaFrase = true;
-
-        }
-        return res.render('resposta', { title: 'Tratamento', questao: frase, resposta: respostaFrase });
+            return res.render('resposta', { title: 'Tratamento', questao: frase, resposta: respostaFrase });
+        }   
     }
-
     res.render('resposta', { title: 'Tratamento', questao: frase, resposta: respostaFrase });
 });
 

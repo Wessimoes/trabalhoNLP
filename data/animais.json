@@ -1,0 +1,16 @@
+{
+    "animal" :  [1 , 12],
+    "mamifero" :   [2 , 5],
+    "cachorro" :   [3 , 3],
+    "gato" :    [4 , 4],
+    "ornitorrinco" :      [5 , 5],
+    "carnivoro" :    [6 , 9],
+    "leao" :       [7 , 7],
+    "leopardo" :      [8 , 8],
+    "tigre": [9 , 9],
+    "herbivoro" :       [10 , 12],
+    "boi" :       [10 , 10],
+    "ovelha" :        [11 , 11],
+    "girafa" : [12 , 12],
+    "raizes":       ["animal", "mamifero", "carnivoro", "herbivoro"]
+}
