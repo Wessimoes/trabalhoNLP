@@ -12,5 +12,5 @@
     "boi" :       [10 , 10],
     "ovelha" :        [11 , 11],
     "girafa" : [12 , 12],
-    "raizes":       ["animal", "mamifero", "carnivoro", "herbivoro"]
+    "verticePai":       ["animal", "mamifero", "carnivoro", "herbivoro"]
 }
