@@ -28,7 +28,7 @@ router.post('/tratamento', function (req, res, next) {
         galho = chain.pop().toLowerCase();
     }
 
-    if (animais[vertice] && animais["raizes"].includes(galho)){
+    if (animais[vertice] && animais["verticePai"].includes(galho)){
         const e = animais[vertice];
         const um = animais[galho];
 
